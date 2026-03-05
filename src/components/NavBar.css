@@ -1,0 +1,39 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  background: black;
+  padding: 10px 20px;
+  gap: 15px;
+}
+
+.logo {
+  color: purple;
+  font-size: 24px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.search {
+  flex: 1;
+  height: 40px;
+  border-radius: 20px;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.search input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  white-space: nowrap;
+}
