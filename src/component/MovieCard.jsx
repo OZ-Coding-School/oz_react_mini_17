@@ -1,12 +1,15 @@
+import { useNavigate } from "react-router-dom";
+
 const MovieCard = ({movie}) => {
+    const navigate = useNavigate();
     return (
-        <div>
+        <div onClick={() => navigate('/detail')}>
             <img 
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} 
                 className='w-[500px] h-[700px] object-cover'
             />
-            <h3 className='text-white , text-center text-lg'>{movie.title}</h3>
-            <p className='text-white , text-center text-lg'>⭐{movie.vote_average}</p>
+            <h3 className='text-white text-center text-lg'>{movie.title}</h3>
+            <p className='text-white text-center text-lg'>⭐{movie.vote_average}</p>
         </div>
     );
 };
