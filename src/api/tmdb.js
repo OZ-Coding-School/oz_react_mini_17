@@ -8,9 +8,9 @@ const options = {
   }
 }
 
-export const fetchPopularMovies = async () => {
+export const fetchPopularMovies = async (page) => {
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?language=ko-KR",
+    `https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=${page}`,
     options
   )
 
