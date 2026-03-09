@@ -18,7 +18,6 @@ function App() {
 
       const data = await response.json()
 
-      // adult = false 필터링
       const filteredMovies = data.results.filter(
         (movie) => movie.adult === false,
       )
