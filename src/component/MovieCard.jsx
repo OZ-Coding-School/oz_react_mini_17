@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 const MovieCard = ({movie}) => {
     const navigate = useNavigate();
     return (
-        <div onClick={() => navigate('/detail')}>
+        <div onClick={() => navigate(`/detail/${movie.id}`)}>
             <img 
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} 
                 className='w-[500px] h-[700px] object-cover'
