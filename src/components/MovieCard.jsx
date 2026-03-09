@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 
-const MovieCard = ({ poster_path, title, vote_average }) => {
+const MovieCard = ({ id, poster_path, title, vote_average }) => {
   return (
     <div className="movie-card">
-      <Link to="/details">
+      <Link to={`/details/${id}`}>
         <img
           src={`https://image.tmdb.org/t/p/w500${poster_path}`}
           alt={title}
