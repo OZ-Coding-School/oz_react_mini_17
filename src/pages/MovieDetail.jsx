@@ -7,12 +7,15 @@ function MovieDetail() {
 
   useEffect(() => {
     const fetchMovieDetail = async () => {
-      const response = await fetch(`https://api.themoviedb.org/3/movie/${id}`, {
-        headers: {
-          accept: 'application/json',
-          Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}?language=ko&page=1&region=KR`,
+        {
+          headers: {
+            accept: 'application/json',
+            Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
+          },
         },
-      })
+      )
 
       const data = await response.json()
       setMovie(data)
