@@ -1,42 +1,161 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.movie-card {
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid rgb(224, 224, 224);
+  overflow: hidden;
+  position: relative;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.movie-card img {
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.movie-view {
+  padding: 3px;
+}
+.movie-title {
+  padding: 7px;
+  font-size: 0.9rem;
+  margin: 0;
 }
 
-.card {
-  padding: 2em;
+.movie-rating {
+  padding: 7px;
+  font-size: 0.9rem;
 }
 
-.read-the-docs {
-  color: #888;
+
+/* 1. 전체 컨테이너 (포스터와 정보 뭉치를 가로로!) */
+.detaill-Container {
+display: flex;
+  width: 60%;             /* 화면 너비의 90% 사용 */    /* 너무 커지지는 않게 */
+  gap: 20px;
+  padding: 30px;
+  background-color: #1c1d1f; /* 상세페이지 전용 어두운 배경 */
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* 입체감 추가 */
+}
+
+/* 2. 왼쪽 포스터 박스 */
+.poster { 
+  flex: 2;        /* 너비 비율 (1) */
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 8px;
+}
+
+.poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    /* 이미지가 박스에 꽉 차게 */
+  border-radius: 4px;
+}
+
+/* 3. 오른쪽 정보 뭉치 (세로로 3단 쌓기) */
+/* 오른쪽 정보 뭉치 전체 */
+.detail-info-content {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* 박스 사이 간격 */
+}
+
+/* 제목과 평점 한 줄 */
+.detaill-title {
+  display: flex;
+  gap: 10px;
+}
+
+/* 모든 박스 공통 스타일 (진한 남색/회색 계열) */
+.detaill-title h2, 
+.detaill-rating, 
+.detaill-genres, 
+.detaill-overview {
+  background-color: #1a638a; /* 사진 속 그 파란색! */
+  color: white;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0; /* 기본 마진 제거 */
+}
+
+/* 각 높이 설정 */
+.detaill-title h2 { flex: 3; padding: 20px; }
+.detaill-rating { flex: 1; padding: 20px; }
+.detaill-genres { padding: 15px; }
+.detaill-overview { 
+  flex-grow: 1; 
+  padding: 30px; 
+  align-items: flex-start; /* 줄거리는 위쪽 정렬 */
+  text-align: left;
+}
+
+.navbar {
+  background-color: #131517; /* 완전 검정보다 살짝 밝은 다크 그레이 */
+  padding: 0 40px;          /* 좌우 패딩만 */
+  height: 64px;             /* 높이 고정 */
+  display: flex;
+  align-items: center;
+  position: sticky; 
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #2d2f31; /* 하단 경계선 추가! */
+}
+
+.nav-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-search input {
+  width: 400px;
+  height: 20px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: none;
+}
+
+.btn-login, .btn-signup {
+  margin-left: 10px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin: 8px;
+}
+
+.btn-signup { background-color: #7b2cbf; color: white; }
+
+body {
+  margin: 0;
+  background-color: #0b0c10; /* 전체 페이지 배경을 어둡게 */
+  color: white;
+}
+
+
+.main-content {
+  width: 100%;
+  min-height: calc(100vh - 64px); /* 화면 꽉 채우기 */
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: flex-start; /* 위에서부터 시작 */
+  padding-top: 40px;
 }
