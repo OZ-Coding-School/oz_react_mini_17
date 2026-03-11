@@ -27,3 +27,14 @@ export const fetchMovieDetail = async (id) => {
   const data = await res.json()
   return data
 }
+
+export const fetchSearchMovies = async (query) => {
+  const cleanQuery = encodeURIComponent(query.trim().toLowerCase())
+  const res = await fetch(
+    `https://api.themoviedb.org/3/search/movie?query=${cleanQuery}&language=ko-KR`,
+    options
+  )
+
+  const data = await res.json()
+  return data.results
+}

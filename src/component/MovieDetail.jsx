@@ -19,17 +19,19 @@ const MovieDetail = () => {
     if (!movie) return <div>로딩중...</div>
 
     return (        
-        <div className="flex bg-cover px-60 py-10" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${backdrop_path})`}}>
-            <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} />
-            <div className="flex flex-col bg-white/50 text-center gap-16 px-10 py-20">
-                <h2 className="text-3xl font-bold">
+        <div className="flex items-center justify-center bg-cover bg-center w-full h-full" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${backdrop_path})`}}>
+            <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title}
+                className="hidden md:block w-[30%] h-195"
+            />
+            <div className="flex flex-col bg-black/60 text-white text-center gap-12 px-10 py-20 md:w-[40%] md:h-195 w-full h-158">
+                <h2 className="text-3xl font-bold ">
                     {title}
-                    <span > ⭐{vote_average}</span>
+                    <span > ⭐{vote_average.toFixed(1)}</span>
                 </h2>
-                <p className="text-xl pb-10">
+                <p className="text-2xl">
                     {genres.map((genre) => genre.name).join(` / `)}
                 </p>
-                <p>
+                <p className="text-sm md:text-lg" >
                     {overview}
                 </p>
             </div>
