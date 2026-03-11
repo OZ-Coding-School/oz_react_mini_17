@@ -2,7 +2,10 @@ import MovieCard from "./MovieCard";
 
 const MovieList = ({movies}) => {
     return (
-        <div className="flex flex-wrap justify-center gap-4 p-4">
+        <div
+            class="flex flex-col items-center justify-center gap-3
+            md:flex-row md:flex-wrap 
+            ">
             {movies.map((movie) => (
               <MovieCard key={movie.id} movie={movie}/>
             ))}
