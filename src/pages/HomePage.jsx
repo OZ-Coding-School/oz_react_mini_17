@@ -1,7 +1,7 @@
 import MovieCard from "../components/MovieCard";
-import MovieData from "../data/movieListData.json";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { MovieListData } from "../data/movieListData.jsx";
 
 const Home = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -9,11 +9,14 @@ const Home = () => {
     setSelectedMovie(movie);
   };
 
+  const { movieList: movieData } = MovieListData();
+
+  console.log("영화 데이터:", movieData);
   return (
     <div className="flex min-h-screen flex-col-reverse">
       <div className="flex flex-wrap gap-4 p-4 overflow-auto mb-30 bg-gray-900 border-t-4">
-        {MovieData.results && MovieData.results.length > 0 ? (
-          MovieData.results.map((movie) => (
+        {movieData && movieData.length > 0 ? (
+          movieData.map((movie) => (
             <MovieCard key={movie.id} movie={movie} onClick={cardClicked} />
           ))
         ) : (
@@ -41,7 +44,10 @@ const Home = () => {
             <div className=" text-white text-5xl m-auto text-center">
               {selectedMovie.title}
             </div>
-            <Link to="/detail">
+            <Link
+              to={`/detail/${selectedMovie.id}`}
+              state={{ movie: selectedMovie }}
+            >
               <button className="bg-amber-400 rounded-4xl text-2xl px-6 cursor-pointer hover:bg-amber-900 hover:text-white mb-10">
                 상세정보
               </button>
