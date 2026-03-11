@@ -1,14 +1,58 @@
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import useDebounce from "../hooks/useDebounce"; // 추가
+
 function NavBar() {
+
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+
+  const debouncedSearch = useDebounce(search, 500); // 추가
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  useEffect(() => {
+    if (debouncedSearch !== "") {
+      navigate(`/?query=${debouncedSearch}`);
+    }
+  }, [debouncedSearch, navigate]);
+
   return (
-    <nav className="navbar">
-      <h1>MH 무비</h1>
+    <nav className="flex flex-col md:flex-row items-center justify-between px-6 py-4 gap-4">
 
-      <input placeholder="영화 검색..." />
+      {/* 로고 */}
+      <h1 className="text-3xl font-bold text-orange-500">
+        MH 무비
+      </h1>
 
-      <div>
-        <button>로그인</button>
-        <button>회원가입</button>
+      {/* 검색창 */}
+      <input
+        type="text"
+        placeholder="영화 검색..."
+        value={search}
+        onChange={handleSearch}
+        className="w-[500px] px-6 py-3 rounded-full bg-orange-200 outline-none text-center"
+      />
+
+      {/* 로그인 회원가입 */}
+
+      <div className="flex gap-3">
+        <Link to="/login">
+         <button className="px-4 py-2 bg-gray-200 rounded">
+          로그인
+        </button>
+        </Link>
+
+        <Link to="/signup">
+         <button className="px-4 py-2 bg-gray-200 rounded">
+          회원가입
+        </button>
+        </Link>
       </div>
+
     </nav>
   );
 }
